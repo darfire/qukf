@@ -46,6 +46,12 @@ class QuaternionUKF(object):
 
     self.track = []
 
+  def get_state(self):
+    x = self._clone_state(self.x)
+    p = np.array(self.p)
+
+    return (x, p)
+
   def _sigma_transform(self, cov):
     """
     Give an nxn covariance matrix compute the 2n sigma points perturbations.
